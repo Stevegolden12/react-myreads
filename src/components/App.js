@@ -1,22 +1,16 @@
 import React from 'react';
-
 import '../App.css';
+import BookCategories from './BookCategories.js'
+
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">     
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>My Book Reads</h1>  
+        <BookCategories />
+        <BookCategories />
+        <BookCategories />
       </header>
     </div>
   );

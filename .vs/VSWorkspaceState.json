@@ -3,8 +3,9 @@
     "",
     "\\mockups",
     "\\public",
-    "\\src"
+    "\\src",
+    "\\src\\components"
   ],
-  "SelectedNode": "\\mockups\\React-Myreads-Main Page mockup.sdxml",
+  "SelectedNode": "\\src\\BooksAPI.js",
   "PreviewInSolutionExplorer": false
 }
