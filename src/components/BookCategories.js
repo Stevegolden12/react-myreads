@@ -9,15 +9,16 @@ class BookCategories extends Component {
   }
 
   componentDidMount() {
-    BooksAPI.getAll = () =>
-         .then((allBooks) => {
+    BooksAPI.getAll()
+         .then((books) => {
           this.setState(() => ({
-          allBooks
+          allBooks: books
         }))
       })
   }
 
   render() { 
+    console.log(this.state.allBooks)
     return (
       <h2>BookCategories</h2>
       )
