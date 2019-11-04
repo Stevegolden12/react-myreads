@@ -1,26 +1,32 @@
 import React, { Component } from 'react';
 import '../App.css';
-import * as BooksAPI from '../BooksAPI.js'
+import BookItems from './BookItems'
 
 
 class BookCategories extends Component {
+  constructor(props) {
+    super(props)
+
+   
+  }
+
   state = {
-    allBooks: [],
+ 
   }
 
-  componentDidMount() {
-    BooksAPI.getAll()
-         .then((books) => {
-          this.setState(() => ({
-          allBooks: books
-        }))
-      })
-  }
-
-  render() { 
-    console.log(this.state.allBooks)
+  render() {    
+    console.log(this.props)
     return (
-      <h2>BookCategories</h2>
+      <React.Fragment>
+      <h2>{this.props.categoryName}</h2>
+      <ul>
+          {
+            this.props.books.map((book)=>{
+              return <BookItems key={book.id} book={book}/>
+            })
+          }
+       </ul>
+      </React.Fragment>
       )
   }
 }
