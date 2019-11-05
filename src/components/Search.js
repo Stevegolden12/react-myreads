@@ -60,19 +60,23 @@ class Search extends Component {
    
     return (
       <React.Fragment>
-      <h1>Search Page</h1>
+        <div className="searchpage__mainPageLinkWrapper">
         <Link to='/'>Go to Main Page</Link>
+        </div>
+          <h1 className="center-text">Search Page</h1>      
         <br />
-        <input className="SearchPage__SearchButton" placeholder="Search by Title" onChange={this.changeInput} />
+        <div className="searchpage__searchbuttonWrapper">
+          <input className="SearchPage__SearchButton" placeholder="Search by Title" onChange={this.changeInput} />
+          </div>
         <br />
         <br />
-        <ul>
+        <div className="searchpage__booklayout">
           {
             this.state.searchBooks.map((book) => {
               return <BookItems key={book.id} book={book} />
           })
           }
-          </ul>
+          </div>
       </React.Fragment>
       )
   }

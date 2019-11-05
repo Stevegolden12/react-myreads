@@ -26,13 +26,17 @@ class App extends Component {
     console.log(this.state.allBooks)
     return (
       <div className="App">
-        <header className="App-header">
-          <h1>My Book Reads</h1><Link to='/Search'>Search</Link>
+        <div className="mainpage__mainpagelinkWrapper">
+          <Link to='/Search'>Search Book Library</Link>
+        </div> 
+        <h1 className="center-text">My Book Reads</h1>
+          <header className="App-header">          
           <BookCategories categoryName='Currently Reading' books={this.state.allBooks.filter((book) => book.shelf === 'currentlyReading')} />
           <BookCategories categoryName='Want to Read' books={this.state.allBooks.filter((book) => book.shelf === 'wantToRead')} />
           <BookCategories categoryName='Read' books={this.state.allBooks.filter((book) => book.shelf === 'read')} />
         </header>
-      </div>
+        </div>
+   
     );
   }
 }
