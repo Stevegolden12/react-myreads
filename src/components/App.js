@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import '../App.css';
 import BookCategories from './BookCategories.js'
-import * as BooksAPI from '../BooksAPI.js'
+import * as BooksAPI from '../BooksAPI.js';
+import { BrowserRouter, Route, Link } from "react-router-dom";
 
 class App extends Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1>My Book Reads</h1> 
+          <h1>My Book Reads</h1><Link to='/Search'>Search</Link>
           <BookCategories categoryName='Currently Reading' books={this.state.allBooks.filter((book) => book.shelf === 'currentlyReading')} />
           <BookCategories categoryName='Want to Read' books={this.state.allBooks.filter((book) => book.shelf === 'wantToRead')} />
           <BookCategories categoryName='Read' books={this.state.allBooks.filter((book) => book.shelf === 'read')} />
