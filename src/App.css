@@ -31,3 +31,29 @@
 .remove-margin {
   margin: 0;
 }
+
+.searchpage__searchbuttonWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.SearchPage__SearchButton {
+  width: 250px;
+  height: 30px;
+}
+
+.searchpage__booklayout {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.mainpage__mainpagelinkWrapper,
+.searchpage__mainPageLinkWrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+a {
+  text-decoration: none;
+}
