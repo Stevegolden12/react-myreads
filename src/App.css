@@ -1,0 +1,33 @@
+.MainPage__BookCategories {
+   display: flex;
+   flex-wrap: wrap;
+}
+
+.MainPage__BookItems {
+  width: 200px;
+  margin-right: 20px;
+}
+
+.MainPage__bookWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.MainPage__BookImage {
+  display: block;
+  margin: auto;
+  height: 200px;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.MainPage__bookTitle {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.remove-margin {
+  margin: 0;
+}
