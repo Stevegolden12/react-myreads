@@ -7,9 +7,22 @@ class BookItems extends Component {
   }
 
   render() {
+    console.log(this.props.book)
+    console.log(typeof this.props.book.imageLinks)
     return (
-      <h3 key={this.props.book.id}>{this.props.book.title}</h3>
-      )
+      <div className="MainPage__BookItems">    
+        
+        <img className="MainPage__BookImage" src={`${this.props.book.imageLinks.smallThumbnail}`} alt="Girl in a jacket" />
+          
+        <h3 className="center-text MainPage__bookTitle">{this.props.book.title}</h3>
+        {
+          this.props.book.authors.map((author) => {
+            return <h4 className="center-text remove-margin">{author}</h4>
+          })
+        }
+      
+      </div>
+        )
   }
 }
 

@@ -18,14 +18,16 @@ class BookCategories extends Component {
     console.log(this.props)
     return (
       <React.Fragment>
-      <h2>{this.props.categoryName}</h2>
-      <ul>
+        <h2 className="center-text">{this.props.categoryName}</h2>  
+          <div className="MainPage__bookWrapper">
+          <ul className="MainPage__BookCategories">
           {
             this.props.books.map((book)=>{
               return <BookItems key={book.id} book={book}/>
             })
           }
-       </ul>
+          </ul>   
+          </div>
       </React.Fragment>
       )
   }
