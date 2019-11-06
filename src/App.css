@@ -1,3 +1,8 @@
+a {
+  text-decoration: none;
+}
+
+
 .MainPage__BookCategories {
    display: flex;
    flex-wrap: wrap;
@@ -54,6 +59,26 @@
   justify-content: flex-end;
 }
 
-a {
-  text-decoration: none;
+.MainPage__ShowShelfTransferImage {
+  height: 50px;
+  width: 50px;
+  position: relative;
+  top: -100px;
+  left: 145px;
+  border-radius: 5px;
+}
+
+.mainpage__formwrapper {
+  min-height: 87px;
+}
+
+.mainpage__select {
+  overflow-y: hidden;
+  position: relative;
+  left: 20px;
+  border-radius: 10px;
+}
+
+.mainpage__option:hover {
+  background-color: aquamarine;
 }
