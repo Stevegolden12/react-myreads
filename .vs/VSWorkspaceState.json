@@ -4,8 +4,9 @@
     "\\mockups",
     "\\public",
     "\\src",
-    "\\src\\components"
+    "\\src\\components",
+    "\\src\\icons"
   ],
-  "SelectedNode": "\\src\\components\\BookCategories.js",
+  "SelectedNode": "\\src\\icons\\arrow-drop-down.svg",
   "PreviewInSolutionExplorer": false
 }
