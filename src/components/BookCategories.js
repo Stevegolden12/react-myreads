@@ -15,15 +15,14 @@ class BookCategories extends Component {
   }
 
   render() {    
-    console.log(this.props)
-    return (
+      return (
       <React.Fragment>
         <h2 className="center-text">{this.props.categoryName}</h2>  
           <div className="MainPage__bookWrapper">
           <ul className="MainPage__BookCategories">
           {
             this.props.books.map((book)=>{
-              return <BookItems key={book.id} book={book}/>
+                return <BookItems key={book.id} book={book} shouldReRender={this.props.shouldReRender}/>
             })
           }
           </ul>   
