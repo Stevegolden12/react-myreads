@@ -9,6 +9,7 @@ class Search extends Component {
     super(props)
 
     this.changeInput = this.changeInput.bind(this);
+    this.changeBookShelf = this.changeBookShelf.bind(this);
   }
 
   state = {
@@ -51,9 +52,22 @@ class Search extends Component {
     })
 
     console.log(this.state.searchBooks)
-  
+  }
 
+  changeBookShelf(event, bookId) {
+    console.log(event.target.value)
+    console.log(bookId)
 
+    const findBookIndex = this.state.allBooks.findIndex((book) => {
+      return book.id === bookId
+    })
+
+    let newAllBooks = [...this.state.allBooks];
+    newAllBooks[findBookIndex].shelf = event.target.value;
+
+    this.setState(() => ({
+      allBooks: newAllBooks
+    }))
   }
 
   render() {
@@ -73,7 +87,7 @@ class Search extends Component {
         <div className="searchpage__booklayout">
           {
             this.state.searchBooks.map((book) => {
-              return <BookItems key={book.id} book={book} />
+              return <BookItems key={book.id} book={book} changeBookShelf={this.changeBookShelf} />
           })
           }
           </div>

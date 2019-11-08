@@ -22,7 +22,7 @@ class BookCategories extends Component {
           <ul className="MainPage__BookCategories">
           {
             this.props.books.map((book)=>{
-                return <BookItems key={book.id} book={book} shouldReRender={this.props.shouldReRender}/>
+                  return <BookItems key={book.id} book={book} changeBookShelf={this.props.changeBookShelf}/>
             })
           }
           </ul>   

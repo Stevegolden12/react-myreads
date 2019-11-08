@@ -28,7 +28,7 @@ class BookItems extends Component {
         
         <img className="MainPage__BookImage" src={`${this.props.book.imageLinks.smallThumbnail}`} alt="movie image" />
         <div className="mainpage__formwrapper">
-          {this.state.isSelectVisible === true && <ShelfTransferMenu isShelf={this.props.book.shelf} book={this.props.book} shouldReRender={this.props.shouldReRender}/>}
+          {this.state.isSelectVisible === true && <ShelfTransferMenu isShelf={this.props.book.shelf} book={this.props.book} changeBookShelf={this.props.changeBookShelf}/>}
         </div>
         <img className="MainPage__ShowShelfTransferImage" src={arrowDropDown} alt="arrow drop down" onClick={()=>this.toggleSelect()}/>
         <h3 className="center-text MainPage__bookTitle">{this.props.book.title}</h3>
