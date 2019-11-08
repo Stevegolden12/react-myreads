@@ -26,19 +26,18 @@ class App extends Component {
   }
 
   changeBookShelf(event, bookId) {
-    console.log(event.target.value)
-    console.log(bookId)
+    if (event.target.value !== 'none') {
+      const findBookIndex = this.state.allBooks.findIndex((book) => {
+        return book.id === bookId
+      })
 
-   const findBookIndex = this.state.allBooks.findIndex((book) => {
-      return book.id === bookId
-    })
+      let newAllBooks = [...this.state.allBooks];
+      newAllBooks[findBookIndex].shelf = event.target.value;
 
-    let newAllBooks = [...this.state.allBooks];
-    newAllBooks[findBookIndex].shelf = event.target.value;
-
-    this.setState(() => ({
-      allBooks: newAllBooks
-    }))
+      this.setState(() => ({
+        allBooks: newAllBooks
+      }))
+    }
   }
 
   render() {

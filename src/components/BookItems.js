@@ -8,6 +8,7 @@ class BookItems extends Component {
     super(props)
 
     this.toggleSelect = this.toggleSelect.bind(this);
+    this.toggleOptionNoneSelect = this.toggleOptionNoneSelect.bind(this);
   }
 
   state = {
@@ -15,11 +16,17 @@ class BookItems extends Component {
   }
 
   toggleSelect() {
-
-
     this.setState(() => ({
       isSelectVisible: !this.state.isSelectVisible
     }))
+  }
+
+  toggleOptionNoneSelect() {
+
+    this.setState(()=>({
+      isSelectVisible: !this.state.isSelectVisible
+    }))
+
   }
 
   render() {
@@ -28,9 +35,9 @@ class BookItems extends Component {
         
         <img className="MainPage__BookImage" src={`${this.props.book.imageLinks.smallThumbnail}`} alt="movie image" />
         <div className="mainpage__formwrapper">
-          {this.state.isSelectVisible === true && <ShelfTransferMenu isShelf={this.props.book.shelf} book={this.props.book} changeBookShelf={this.props.changeBookShelf}/>}
+          {this.state.isSelectVisible === true && <ShelfTransferMenu isShelf={this.props.book.shelf} book={this.props.book} changeBookShelf={this.props.changeBookShelf} toggleOptionNoneSelect={this.toggleOptionNoneSelect}/>}
         </div>
-        <img className="MainPage__ShowShelfTransferImage" src={arrowDropDown} alt="arrow drop down" onClick={()=>this.toggleSelect()}/>
+        <img className="MainPage__ShowShelfTransferImage" src={arrowDropDown} alt="arrow drop down" onClick={() => { this.toggleSelect() }}/>
         <h3 className="center-text MainPage__bookTitle">{this.props.book.title}</h3>
         {
           this.props.book.authors.map((author) => {
