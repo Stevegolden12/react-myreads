@@ -8,7 +8,7 @@ class App extends Component {
   constructor(props) {
     super(props)
 
-    this.shouldReRender = this.shouldReRender.bind(this);
+    this.changeBookShelf = this.changeBookShelf.bind(this);
   }
 
   state = {
@@ -25,13 +25,20 @@ class App extends Component {
       })
   }
 
-  shouldReRender() {
-    console.log("shouldReRender")
-    this.setState((currentState) => ({
-      isReRender: !this.state.isReRender
-    }))
+  changeBookShelf(event, bookId) {
+    console.log(event.target.value)
+    console.log(bookId)
 
-    console.log(this.state.isReRender)
+   const findBookIndex = this.state.allBooks.findIndex((book) => {
+      return book.id === bookId
+    })
+
+    let newAllBooks = [...this.state.allBooks];
+    newAllBooks[findBookIndex].shelf = event.target.value;
+
+    this.setState(() => ({
+      allBooks: newAllBooks
+    }))
   }
 
   render() {
@@ -42,9 +49,9 @@ class App extends Component {
         </div> 
         <h1 className="center-text">My Book Reads</h1>
         <header className="App-header">
-          <BookCategories categoryName='Currently Reading' books={this.state.allBooks.filter((book) => book.shelf === 'currentlyReading')} shouldReRender={this.shouldReRender} />
-          <BookCategories categoryName='Want to Read' books={this.state.allBooks.filter((book) => book.shelf === 'wantToRead')} shouldReRender={this.shouldReRender} />
-          <BookCategories categoryName='Read' books={this.state.allBooks.filter((book) => book.shelf === 'read')} shouldReRender={this.shouldReRender} />
+          <BookCategories categoryName='Currently Reading' books={this.state.allBooks.filter((book) => book.shelf === 'currentlyReading')} changeBookShelf={this.changeBookShelf} />
+          <BookCategories categoryName='Want to Read' books={this.state.allBooks.filter((book) => book.shelf === 'wantToRead')} changeBookShelf={this.changeBookShelf} />
+          <BookCategories categoryName='Read' books={this.state.allBooks.filter((book) => book.shelf === 'read')} changeBookShelf={this.changeBookShelf} />
         </header>
         </div>
    
