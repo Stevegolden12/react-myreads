@@ -38,13 +38,14 @@ class BookItems extends Component {
           {this.state.isSelectVisible === true && <ShelfTransferMenu isShelf={this.props.book.shelf} book={this.props.book} changeBookShelf={this.props.changeBookShelf} toggleOptionNoneSelect={this.toggleOptionNoneSelect}/>}
         </div>
         <img className="MainPage__ShowShelfTransferImage" src={arrowDropDown} alt="arrow drop down" onClick={() => { this.toggleSelect() }}/>
+        <div className="mainPage__bookInfoWrapper">
         <h3 className="center-text MainPage__bookTitle">{this.props.book.title}</h3>
         {
           this.props.book.authors.map((author) => {
             return <h4 key={author} className="center-text remove-margin">{author}</h4>
           })
         }
-       
+       </div>
       </div>
         )
   }
