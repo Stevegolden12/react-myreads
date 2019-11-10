@@ -43,7 +43,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="mainpage__mainpagelinkWrapper">
+        <div className="main-page__main-page-link-wrapper">
           <Link to='/Search'>Search Book Library</Link>
         </div> 
         <h1 className="center-text">My Book Reads</h1>
