@@ -1,42 +1,49 @@
+:root {
+  --route-header-background-color: blue;
+  --route-header-color: white;
+  --route-link-color: white;
+  --main-page-option-color: aquamarine;
+}
+
 a {
   text-decoration: none;
-  color: white;
+  color: var(--route-link-color);
 }
 
 h1 {
   margin: 0;
-  background-color: blue;
-  color: white;
-
-}
-
-
-.MainPage__BookCategories {
-   display: flex;
-   flex-wrap: wrap;
-}
-
-.MainPage__BookItems {
-  width: 200px;
-  margin-right: 20px;
-}
-
-.MainPage__bookWrapper {
-  display: flex;
-  justify-content: center;
-}
-
-.MainPage__BookImage {
-  display: block;
-  margin: auto;
-  height: 200px;
+  background-color: var(--route-header-background-color);
+  color: var(--route-header-color);
 }
 
 .center-text {
   text-align: center;
 }
 
-.MainPage__bookTitle {
+
+.main-page__book-categories {
+   display: flex;
+   flex-wrap: wrap;
+}
+
+.main-page__book-items {
+  width: 200px;
+  margin-right: 20px;
+}
+
+.main-page__book-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.main-page__book-image {
+  display: block;
+  margin: auto;
+  height: 200px;
+}
+
+
+.main-page__book-title {
   margin-top: 5px;
   margin-bottom: 5px;
 }
@@ -45,30 +52,7 @@ h1 {
   margin: 0;
 }
 
-.searchpage__searchbuttonWrapper {
-  display: flex;
-  justify-content: center;
-}
-
-.SearchPage__SearchButton {
-  width: 250px;
-  height: 30px;
-}
-
-.searchpage__booklayout {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.mainpage__mainpagelinkWrapper,
-.searchpage__mainPageLinkWrapper {
-  display: flex;
-  justify-content: flex-end;
-  background-color: blue;
-}
-
-.MainPage__ShowShelfTransferImage {
+.main-page__show-shelf-transfer-image {
   height: 50px;
   width: 50px;
   position: relative;
@@ -77,18 +61,41 @@ h1 {
   border-radius: 5px;
 }
 
-.mainPage__bookInfoWrapper {
+.main-page__book-info-wrapper {
   position: relative;
   top: -50px;
 }
 
-.mainpage__select {
+.main-page__select {
   overflow-y: hidden;
   position: relative;
   left: 20px;
   border-radius: 10px;
 }
 
-.mainpage__option:hover {
-  background-color: aquamarine;
+.main-page__option:hover {
+  background-color: var(--main-page-option-color);
+}
+
+.main-page__main-page-link-wrapper,
+.search-page__main-page-link-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  background-color: var(--route-header-background-color);
+}
+
+.search-page__search-button-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.search-page__search-button {
+  width: 250px;
+  height: 30px;
+}
+
+.search-page__book-layout {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
