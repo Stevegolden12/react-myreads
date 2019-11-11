@@ -1,9 +1,9 @@
-#MY Reads Project
+# MY Reads Project
 
 This project is to sort boots via categories like Currently Reading, Want to Read, and Read.  Also you can search books via
 title name.
 
-##Installation
+## Installation
 
 The following is from create-react-app about how to run the project:
 
