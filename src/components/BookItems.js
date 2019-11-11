@@ -12,7 +12,22 @@ class BookItems extends Component {
   }
 
   state = {
-    isSelectVisible: false
+    isSelectVisible: false,
+    authors: ''
+  }
+
+  componentDidMount() {
+    let authors = ''
+    if (this.props.book.authors !== undefined) {
+      authors = Object.entries(this.props.book.authors).flat();
+      authors = authors.filter((ignore, i) => {
+        return i % 2 === 1
+      })
+      console.log(authors)
+    }
+    this.setState(() => ({
+      authors: authors
+    }))
   }
 
   toggleSelect() {
@@ -30,6 +45,8 @@ class BookItems extends Component {
   }
 
   render() {
+
+    console.log(JSON.stringify(this.state.authors))
     return (
       <div className="main-page__book-items">    
         
@@ -39,12 +56,19 @@ class BookItems extends Component {
         </div>
         <img className="main-page__show-shelf-transfer-image" src={arrowDropDown} alt="arrow drop down" onClick={() => { this.toggleSelect() }}/>
         <div className="main-page__book-info-wrapper">
+          
+            
           <h3 className="center-text main-page__book-title">{this.props.book.title}</h3>
-        {
-          this.props.book.authors.map((author) => {
+          {  
+           
+           this.state.authors !== '' && 
+       
+          this.state.authors.map((author) => {
             return <h4 key={author} className="center-text remove-margin">{author}</h4>
           })
+
         }
+     
        </div>
       </div>
         )
