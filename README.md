@@ -1,14 +1,17 @@
-#MY Reads Project
+# MY Reads Project
 
 This project is to sort boots via categories like Currently Reading, Want to Read, and Read.  Also you can search books via
 title name.
 
-##Installation
+## Installation
 
 The following is from create-react-app about how to run the project:
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## `npm install`
+
+Use npm install where you want to install the app at which will be your project directory.
 
 ## Available Scripts
 
