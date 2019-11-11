@@ -32,7 +32,21 @@ class Search extends Component {
 
 
   changeInput(event) {
-
+    console.log(event.target.value)
+    
+    if(event.target.value !== '') {
+      this.setState({
+        searchInput: event.target.value
+      })
+      BooksAPI.search(event.target.value)
+        .then((result) => {
+          this.setState(() => ({
+            searchBooks: result
+          }))
+        })
+    }
+    
+    /*
     let value = event.target.value.toLowerCase()
   
     let filterSearch = this.state.allBooks.map(book => {
@@ -51,7 +65,9 @@ class Search extends Component {
       searchBooks: filterSearch     
     })
 
-    console.log(this.state.searchBooks)
+    //console.log(this.state.searchBooks)
+  
+  */
   }
 
   changeBookShelf(event, bookId) {
@@ -68,6 +84,7 @@ class Search extends Component {
     this.setState(() => ({
       allBooks: newAllBooks
     }))
+
   }
 
   render() {
@@ -85,10 +102,14 @@ class Search extends Component {
         <br />
         <br />
         <div className="search-page__book-layout">
-          {
-            this.state.searchBooks.map((book) => {
+
+          {this.state.searchBooks[0] !== undefined && 
+            this.state.searchBooks.map((book) => {  
+              
               return <BookItems key={book.id} book={book} changeBookShelf={this.changeBookShelf} />
-          })
+           
+           })
+          
           }
           </div>
       </React.Fragment>
