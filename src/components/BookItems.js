@@ -47,7 +47,7 @@ class BookItems extends Component {
     return (
       <div className="main-page__book-items">    
         
-        <img className="main-page__book-image" src={`${this.props.book.imageLinks.smallThumbnail}`} alt="movie image" />
+        <img className="main-page__book-image" src={`${this.props.book.imageLinks.smallThumbnail}`} alt="Book cover" />
         <div className="mainpage__formwrapper">
           {this.state.isSelectVisible === true && <ShelfTransferMenu isShelf={this.props.book.shelf} book={this.props.book} route={this.props.route} changeBookShelf={this.props.changeBookShelf} toggleOptionNoneSelect={this.toggleOptionNoneSelect}/>}
         </div>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../App.css';
 import BookCategories from './BookCategories.js'
 import * as BooksAPI from '../BooksAPI.js';
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class App extends Component {
   constructor(props) {
@@ -12,24 +12,26 @@ class App extends Component {
   }
 
   state = {
-    myBooks: [],
-    isReRender: false,
+    myBooks: [], 
    }
 
   componentDidMount() {
-     if (this.props.location.state === undefined) {
-      BooksAPI.getAll()
-        .then((books) => {
-          console.log(books)
-          this.setState(() => ({
-            myBooks: books
-          }))
-        })
-    } else {
-      this.setState({
-        myBooks: this.props.location.state.myBooks        
-      })
-    }
+      if (this.props.location.state === undefined) {
+        BooksAPI.getAll()
+          .then((books) => {
+            console.log(books)
+            this.setState(() => ({
+              myBooks: books
+            }))
+          })
+      } else {
+        this.setState({
+          myBooks: this.props.location.state.myBooks,
+       })
+      }
+
+ 
+ 
   }
 
   changeBookShelf(event, bookId) {
@@ -40,15 +42,13 @@ class App extends Component {
 
       let newMyBooks = [...this.state.myBooks];
       newMyBooks[findBookIndex].shelf = event.target.value;
-
       this.setState(() => ({
-        myBooks: newMyBooks
+        myBooks: [...newMyBooks]
       }))
 
   }
 
   render() {
-   
     return (
       <div className="App">
         <div className="main-page__main-page-link-wrapper">
