@@ -10,10 +10,6 @@ class BookCategories extends Component {
    
   }
 
-  state = {
- 
-  }
-
   render() {    
       return (
       <React.Fragment>

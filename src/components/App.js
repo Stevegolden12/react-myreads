@@ -12,45 +12,59 @@ class App extends Component {
   }
 
   state = {
-    allBooks: [],
+    myBooks: [],
     isReRender: false,
   }
 
   componentDidMount() {
-    BooksAPI.getAll()
-      .then((books) => {
-        this.setState(() => ({
-          allBooks: books
-        }))
+  
+    if (this.props.location.state.myBooks === undefined) {
+      BooksAPI.getAll()
+        .then((books) => {
+          console.log(books)
+          this.setState(() => ({
+            myBooks: books
+          }))
+        })
+    } else {
+      this.setState({
+        myBooks: this.props.location.state.myBooks
       })
-  }
-
-  changeBookShelf(event, bookId) {
-    if (event.target.value !== 'none') {
-      const findBookIndex = this.state.allBooks.findIndex((book) => {
-        return book.id === bookId
-      })
-
-      let newAllBooks = [...this.state.allBooks];
-      newAllBooks[findBookIndex].shelf = event.target.value;
-
-      this.setState(() => ({
-        allBooks: newAllBooks
-      }))
     }
   }
 
+  changeBookShelf(event, bookId) {
+   
+      const findBookIndex = this.state.myBooks.findIndex((book) => {
+        return book.id === bookId
+      })
+
+      let newMyBooks = [...this.state.myBooks];
+      newMyBooks[findBookIndex].shelf = event.target.value;
+
+      this.setState(() => ({
+        myBooks: newMyBooks
+      }))
+
+  }
+
   render() {
+   
     return (
       <div className="App">
         <div className="main-page__main-page-link-wrapper">
-          <Link to='/Search'>Search Book Library</Link>
+          <Link to={{
+            pathname: '/Search',
+            state: {
+              myBooks: this.state.myBooks
+            }
+          }}>Search Book Library</Link>
         </div> 
         <h1 className="center-text">My Book Reads</h1>
         <header className="App-header">
-          <BookCategories categoryName='Currently Reading' books={this.state.allBooks.filter((book) => book.shelf === 'currentlyReading')} changeBookShelf={this.changeBookShelf} />
-          <BookCategories categoryName='Want to Read' books={this.state.allBooks.filter((book) => book.shelf === 'wantToRead')} changeBookShelf={this.changeBookShelf} />
-          <BookCategories categoryName='Read' books={this.state.allBooks.filter((book) => book.shelf === 'read')} changeBookShelf={this.changeBookShelf} />
+          <BookCategories categoryName='Currently Reading' books={this.state.myBooks.filter((book) => book.shelf === 'currentlyReading')} changeBookShelf={this.changeBookShelf} />
+          <BookCategories categoryName='Want to Read' books={this.state.myBooks.filter((book) => book.shelf === 'wantToRead')} changeBookShelf={this.changeBookShelf} />
+          <BookCategories categoryName='Read' books={this.state.myBooks.filter((book) => book.shelf === 'read')} changeBookShelf={this.changeBookShelf} />
         </header>
         </div>
    
