@@ -14,11 +14,10 @@ class App extends Component {
   state = {
     myBooks: [],
     isReRender: false,
-  }
+   }
 
   componentDidMount() {
-  
-    if (this.props.location.state.myBooks === undefined) {
+     if (this.props.location.state === undefined) {
       BooksAPI.getAll()
         .then((books) => {
           console.log(books)
@@ -28,13 +27,13 @@ class App extends Component {
         })
     } else {
       this.setState({
-        myBooks: this.props.location.state.myBooks
+        myBooks: this.props.location.state.myBooks        
       })
     }
   }
 
   changeBookShelf(event, bookId) {
-   
+      console.log("changeBookShelf function triggered")
       const findBookIndex = this.state.myBooks.findIndex((book) => {
         return book.id === bookId
       })

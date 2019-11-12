@@ -15,26 +15,24 @@ class Search extends Component {
   state = {
     searchInput: '',
     myBooks: [],
-    searchBooks: []
+    searchBooks: [],
+    getMyBooks: true,
   }
 
   componentDidMount() {   
-    console.log(this.props.location.state.myBooks)
-    console.log(this.props.location.state.myBooks === undefined)
-    if (this.props.location.state.myBooks === undefined) {
-      BooksAPI.getAll()
-        .then((books) => {
-          console.log("hitting search getAll function")
-          //console.log(books)
-          this.setState(() => ({
-            myBooks: books
-          }))
+      if (this.props.location.state === undefined) {
+        BooksAPI.getAll()
+          .then((books) => {
+            console.log(books)
+            this.setState(() => ({
+              myBooks: books
+            }))
+          })
+      } else {
+        this.setState({
+          myBooks: this.props.location.state.myBooks
         })
-    } else {
-      this.setState({
-        myBooks:  this.props.location.state.myBooks  
-      })
-    }
+      }
     }
 
 
@@ -78,21 +76,23 @@ class Search extends Component {
   }
 
   changeBookShelf(event, bookId) {
-    //console.log(event.target.value)
-    //console.log(bookId)
+    console.log(event.target.value)
+    console.log(bookId)
  
-
-    const findBookIndex = this.state.myBooks.findIndex((book) => {
+    console.log("changeBookShelf function targeted")
+    
+    const findBookIndex = this.state.searchBooks.findIndex((book) => {
       return book.id === bookId
     })
+    this.state.searchBooks[findBookIndex].shelf = event.target.value;
+    console.log(this.state.searchBooks[findBookIndex])
 
-    let newMyBooks = [...this.state.myBooks];
-    newMyBooks[findBookIndex].shelf = event.target.value;
+    let addBook = this.state.searchBooks[findBookIndex]
 
     this.setState(() => ({
-      myBooks: newMyBooks
+      myBooks: [...this.state.myBooks, addBook ] 
     }))
-
+   
   }
 
   render() {
@@ -120,7 +120,7 @@ class Search extends Component {
           {this.state.searchBooks[0] !== undefined && 
             this.state.searchBooks.map((book) => {  
               
-              return <BookItems key={book.id} book={book} changeBookShelf={this.changeBookShelf} />
+              return <BookItems key={book.id} book={book} changeBookShelf={this.changeBookShelf} route="search" />
            
            })
           
