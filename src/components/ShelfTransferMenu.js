@@ -5,12 +5,15 @@ import '../App.css';
 class ShelfTransferMenu extends Component {
   constructor(props) {
     super(props)
-
-
   }
 
   render() {
-    let shelf = this.props.isShelf;
+    let shelf;
+    if (this.props.route === 'app') {
+      shelf = this.props.isShelf;
+    } else {
+      shelf = ''
+    }
     console.log(shelf)
     console.log()
     return (

@@ -18,7 +18,7 @@ class BookCategories extends Component {
             <ul className="main-page__book-categories">
           {
             this.props.books.map((book)=>{
-                  return <BookItems key={book.id} book={book} changeBookShelf={this.props.changeBookShelf}/>
+                  return <BookItems key={book.id} book={book} changeBookShelf={this.props.changeBookShelf} route="app"/>
             })
           }
           </ul>   
