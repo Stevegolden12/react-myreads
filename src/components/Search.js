@@ -14,20 +14,27 @@ class Search extends Component {
 
   state = {
     searchInput: '',
-    allBooks: [],
+    myBooks: [],
     searchBooks: []
   }
 
-    componentDidMount() {
+  componentDidMount() {   
+    console.log(this.props.location.state.myBooks)
+    console.log(this.props.location.state.myBooks === undefined)
+    if (this.props.location.state.myBooks === undefined) {
       BooksAPI.getAll()
         .then((books) => {
-          console.log(books)
+          console.log("hitting search getAll function")
+          //console.log(books)
           this.setState(() => ({
-            allBooks: books
+            myBooks: books
           }))
         })
-
- 
+    } else {
+      this.setState({
+        myBooks:  this.props.location.state.myBooks  
+      })
+    }
     }
 
 
@@ -71,28 +78,35 @@ class Search extends Component {
   }
 
   changeBookShelf(event, bookId) {
-    console.log(event.target.value)
-    console.log(bookId)
+    //console.log(event.target.value)
+    //console.log(bookId)
+ 
 
-    const findBookIndex = this.state.allBooks.findIndex((book) => {
+    const findBookIndex = this.state.myBooks.findIndex((book) => {
       return book.id === bookId
     })
 
-    let newAllBooks = [...this.state.allBooks];
-    newAllBooks[findBookIndex].shelf = event.target.value;
+    let newMyBooks = [...this.state.myBooks];
+    newMyBooks[findBookIndex].shelf = event.target.value;
 
     this.setState(() => ({
-      allBooks: newAllBooks
+      myBooks: newMyBooks
     }))
 
   }
 
   render() {
    
+    console.log(this.props.location.state.myBooks)
     return (
       <React.Fragment>
         <div className="search-page__main-page-link-wrapper">
-        <Link to='/'>Go to Main Page</Link>
+          <Link to={{
+            pathname: '/',
+            state: {
+              myBooks: this.state.myBooks
+            }
+          }}>Go to Main Page</Link>
         </div>
           <h1 className="center-text">Search Page</h1>      
         <br />

@@ -22,8 +22,7 @@ class BookItems extends Component {
       authors = Object.entries(this.props.book.authors).flat();
       authors = authors.filter((ignore, i) => {
         return i % 2 === 1
-      })
-      console.log(authors)
+      })    
     }
     this.setState(() => ({
       authors: authors
@@ -45,8 +44,6 @@ class BookItems extends Component {
   }
 
   render() {
-
-    console.log(JSON.stringify(this.state.authors))
     return (
       <div className="main-page__book-items">    
         

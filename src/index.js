@@ -10,7 +10,7 @@ const routing = (
   <BrowserRouter>
     <div>
       <Route exact path="/" component={App} />
-      <Route path="/search" component={Search} />     
+      <Route path="/search" component={Search} />
     </div>
   </BrowserRouter>
 )
