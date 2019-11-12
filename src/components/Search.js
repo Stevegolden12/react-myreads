@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 import * as BooksAPI from '../BooksAPI.js';
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import BookItems from './BookItems'
 
 class Search extends Component {
@@ -76,18 +76,18 @@ class Search extends Component {
   }
 
   changeBookShelf(event, bookId) {
-    console.log(event.target.value)
-    console.log(bookId)
- 
-    console.log("changeBookShelf function targeted")
+
+    let newSearchBooks = [...this.state.searchBooks ]
+
+    console.log()
     
-    const findBookIndex = this.state.searchBooks.findIndex((book) => {
+    let findBookIndex = newSearchBooks.findIndex((book) => {
       return book.id === bookId
     })
-    this.state.searchBooks[findBookIndex].shelf = event.target.value;
-    console.log(this.state.searchBooks[findBookIndex])
+    newSearchBooks[findBookIndex].shelf = event.target.value;
+    
 
-    let addBook = this.state.searchBooks[findBookIndex]
+    let addBook = newSearchBooks[findBookIndex]
 
     this.setState(() => ({
       myBooks: [...this.state.myBooks, addBook ] 
@@ -95,9 +95,7 @@ class Search extends Component {
    
   }
 
-  render() {
-   
-    console.log(this.props.location.state.myBooks)
+  render() { 
     return (
       <React.Fragment>
         <div className="search-page__main-page-link-wrapper">

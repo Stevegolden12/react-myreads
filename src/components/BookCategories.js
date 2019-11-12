@@ -4,12 +4,7 @@ import BookItems from './BookItems'
 
 
 class BookCategories extends Component {
-  constructor(props) {
-    super(props)
-
-   
-  }
-
+ 
   render() {    
       return (
       <React.Fragment>
