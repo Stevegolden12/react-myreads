@@ -17,6 +17,21 @@ class App extends Component {
    }
 
   componentDidMount() {
+    if (this.props.location.state === undefined) {
+      BooksAPI.getAll()
+        .then((books) => {
+          console.log(books)
+          this.setState(() => ({
+            myBooks: books
+          }))
+        })
+    } else {
+      this.setState({
+        myBooks: this.props.location.state.myBooks,
+      })
+    }
+
+    /*
     console.log(this.props.history.location.state === undefined)
     if (this.props.location.state === undefined && this.props.history.location.state === undefined) {
       BooksAPI.getAll()
@@ -41,7 +56,7 @@ class App extends Component {
       //this.props.history.replace('/')
       //console.log(this.props.history.location.state.myBooks)
     }  
-    
+    */
   }
 
   changeBookShelf(event, bookId) {
