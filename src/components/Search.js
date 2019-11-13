@@ -19,6 +19,8 @@ class Search extends Component {
     getMyBooks: true,
   }
 
+ 
+
   componentDidMount() {   
       if (this.props.location.state === undefined) {
         BooksAPI.getAll()

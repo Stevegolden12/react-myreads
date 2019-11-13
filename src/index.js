@@ -4,15 +4,18 @@ import './index.css';
 import App from './components/App';
 import Search from './components/Search';
 import * as serviceWorker from './serviceWorker';
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Router, Route } from "react-router-dom";
+import { createBrowserHistory } from "history";
+
+const history = createBrowserHistory();
 
 const routing = (
-  <BrowserRouter>
+  <Router history={history}>
     <div>
       <Route exact path="/" component={App} />
       <Route path="/search" component={Search} />
     </div>
-  </BrowserRouter>
+  </Router>
 )
 
 ReactDOM.render(routing, document.getElementById('root'));
