@@ -4,6 +4,7 @@ import BookCategories from './BookCategories.js'
 import * as BooksAPI from '../BooksAPI.js';
 import { Link } from "react-router-dom";
 
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -16,22 +17,31 @@ class App extends Component {
    }
 
   componentDidMount() {
-      if (this.props.location.state === undefined) {
-        BooksAPI.getAll()
-          .then((books) => {
-            console.log(books)
-            this.setState(() => ({
-              myBooks: books
-            }))
+    console.log(this.props.history.location.state === undefined)
+    if (this.props.location.state === undefined && this.props.history.location.state === undefined) {
+      BooksAPI.getAll()
+        .then((books) => {
+          console.log(books)
+          this.props.history.push('/', {
+            myBooks: books
           })
-      } else {
-        this.setState({
-          myBooks: this.props.location.state.myBooks,
-       })
-      }
-
- 
- 
+          this.setState(() => ({
+            myBooks: books
+          }))
+        })
+    } else if (this.props.history.location.state !== undefined) {
+      this.props.history.replace('/')
+      console.log("this.props.location")
+      //console.log(this.props.history.location.state.myBooks === undefined)
+      this.setState({
+        myBooks: this.props.history,
+      })
+    } else {
+      console.log("checking logic this.props.history")   
+      //this.props.history.replace('/')
+      //console.log(this.props.history.location.state.myBooks)
+    }  
+    
   }
 
   changeBookShelf(event, bookId) {
@@ -49,6 +59,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props.history)
     return (
       <div className="App">
         <div className="main-page__main-page-link-wrapper">
