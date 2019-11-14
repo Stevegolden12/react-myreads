@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../App.css';
 import ShelfTransferMenu from './ShelfTransferMenu'
 import arrowDropDown from '../icons/arrow-drop-down.svg';
+import noImageAvailable from '../icons/no-image-available.png'
 
 class BookItems extends Component {
   constructor(props) {
@@ -43,11 +44,16 @@ class BookItems extends Component {
 
   }
 
-  render() {    
+  render() {   
+ 
     return (
-      <div className="main-page__book-items">    
-        
-        <img className="main-page__book-image" src={`${this.props.book.imageLinks.smallThumbnail}`} alt="Book cover" />
+      <div className="main-page__book-items">   
+
+        {this.props.book.imageLinks === undefined && <img className="main-page__book-image" src={noImageAvailable} alt="Book cover" />
+        }
+        {this.props.book.imageLinks !== undefined && <img className="main-page__book-image" src={`${this.props.book.imageLinks.smallThumbnail}`} alt="Book cover" />
+        }
+
         <div className="mainpage__formwrapper">
           {this.state.isSelectVisible === true && <ShelfTransferMenu isShelf={this.props.book.shelf} book={this.props.book} route={this.props.route} changeBookShelf={this.props.changeBookShelf} toggleOptionNoneSelect={this.toggleOptionNoneSelect}/>}
         </div>
