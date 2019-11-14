@@ -3,6 +3,7 @@ import '../App.css';
 import BookCategories from './BookCategories.js'
 import * as BooksAPI from '../BooksAPI.js';
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 
 class App extends Component {
@@ -10,13 +11,20 @@ class App extends Component {
     super(props)
 
     this.changeBookShelf = this.changeBookShelf.bind(this);
+    this.getHistory = this.getHistory.bind(this);
   }
 
   state = {
     myBooks: [], 
-   }
+  }
+
+getHistory() {
+    //let history = useHistory();
+    //console.log(history);
+  }
 
   componentDidMount() {
+    this.getHistory();
     if (this.props.location.state === undefined) {
       BooksAPI.getAll()
         .then((books) => {
