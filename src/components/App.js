@@ -3,7 +3,9 @@ import '../App.css';
 import BookCategories from './BookCategories.js'
 import * as BooksAPI from '../BooksAPI.js';
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+
+
 
 
 class App extends Component {
@@ -11,20 +13,38 @@ class App extends Component {
     super(props)
 
     this.changeBookShelf = this.changeBookShelf.bind(this);
-    this.getHistory = this.getHistory.bind(this);
   }
 
   state = {
     myBooks: [], 
   }
 
-getHistory() {
-    //let history = useHistory();
-    //console.log(history);
-  }
+
+  componentDidUpdate(prevProps) {
+    // will be true
+   
+    let locationChanged = this.props.location !== prevProps.location;
+        
+    //console.log(prevProps.location.state) 
+    console.log(this.props.location)
+    console.log(prevProps.location)
+    if (locationChanged) {
+      console.log("if locationChanged triggered")
+      /*
+      this.setState({
+        myBooks: this.props.location.state.myBooks,
+      })
+      */
+    }
+    console.log(this.props.location)
+    
+}
 
   componentDidMount() {
-    this.getHistory();
+    console.log(this.props.location)
+    const { location } = { ...this.props }
+   
+   /*
     if (this.props.location.state === undefined) {
       BooksAPI.getAll()
         .then((books) => {
@@ -38,35 +58,39 @@ getHistory() {
         myBooks: this.props.location.state.myBooks,
       })
     }
-
-    /*
-    console.log(this.props.history.location.state === undefined)
-    if (this.props.location.state === undefined && this.props.history.location.state === undefined) {
+    */
+    
+   
+    if (this.props.location.state === undefined) {
+      console.log(this.props.location.state === undefined)
       BooksAPI.getAll()
         .then((books) => {
-          console.log(books)
-          this.props.history.push('/', {
-            myBooks: books
-          })
+          console.log(books) 
           this.setState(() => ({
             myBooks: books
           }))
         })
-    } else if (this.props.history.location.state !== undefined) {
-      this.props.history.replace('/')
-      console.log("this.props.location")
-      //console.log(this.props.history.location.state.myBooks === undefined)
-      this.setState({
-        myBooks: this.props.history,
+
+      this.props.history.push('/', {
+        myBooks: this.state.myBooks
       })
+    
+    } else if (this.props.location.state !== undefined) {
+             this.setState(()=>({
+              myBooks: this.props.location.state.myBooks,
+      }))
+ /*
+
     } else {
-      console.log("checking logic this.props.history")   
+      //console.log("checking logic this.props.history")   
       //this.props.history.replace('/')
       //console.log(this.props.history.location.state.myBooks)
     }  
     */
-  }
+    }
 
+  }
+ 
   changeBookShelf(event, bookId) {
       console.log("changeBookShelf function triggered")
       const findBookIndex = this.state.myBooks.findIndex((book) => {
@@ -77,12 +101,15 @@ getHistory() {
       newMyBooks[findBookIndex].shelf = event.target.value;
       this.setState(() => ({
         myBooks: [...newMyBooks]
-      }))
-
+    }))
+ 
+    this.props.history.push('/', {
+      myBooks: [...newMyBooks]
+    })  
   }
 
   render() {
-    console.log(this.props.history)
+ 
     return (
       <div className="App">
         <div className="main-page__main-page-link-wrapper">
@@ -104,5 +131,7 @@ getHistory() {
     );
   }
 }
+
+
 
 export default App;
