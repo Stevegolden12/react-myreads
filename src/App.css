@@ -22,8 +22,9 @@ h1 {
 
 
 .main-page__book-categories {
-   display: flex;
-   flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .main-page__book-items {
