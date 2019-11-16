@@ -45,7 +45,14 @@ class BookItems extends Component {
   }
 
   render() {   
- 
+/*
+    console.log(this.props.myBookArray)
+    let isInArray = this.props.myBookArray.find((book)=>{
+      return book.id === 'asdf'
+    })
+
+    console.log(isInArray)
+    */
     return (
       <div className="main-page__book-items">   
 

@@ -60,8 +60,8 @@ class App extends Component {
     }
     */
     
-   
-    if (this.props.location.state === undefined) {
+   console.log(this.props.location.state)
+    if (this.props.location.state === undefined || this.props.location.state.myBooks.length === 0) {
       console.log(this.props.location.state === undefined)
       BooksAPI.getAll()
         .then((books) => {
@@ -79,7 +79,7 @@ class App extends Component {
              this.setState(()=>({
               myBooks: this.props.location.state.myBooks,
       }))
- /*
+      /*
 
     } else {
       //console.log("checking logic this.props.history")   
