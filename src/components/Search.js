@@ -20,22 +20,32 @@ class Search extends Component {
   }
 
  
-
-  componentDidMount() {   
-      if (this.props.location.state === undefined) {
-        BooksAPI.getAll()
-          .then((books) => {
-            console.log(books)
-            this.setState(() => ({
-              myBooks: books
-            }))
-          })
-      } else {
-        this.setState({
-          myBooks: this.props.location.state.myBooks
+  
+  componentDidMount() {
+    console.log("Testing component did mount")
+    console.log(this.props.location.state === undefined)
+    if (this.props.location.state === undefined) {
+      console.log(this.props.location.state === undefined)
+     
+      BooksAPI.getAll()
+        .then((books) => {
+          console.log(books)
+          this.setState(() => ({
+            myBooks: books
+          }))
         })
-      }
+
+      this.props.history.push('/', {
+        myBooks: this.state.myBooks
+      })
+
+    } else if (this.props.location.state !== undefined) {
+      this.setState(() => ({
+        myBooks: this.props.location.state.myBooks,
+      }))
     }
+    console.log(this.state.myBooks)
+  }
 
 
   changeInput(event) {
@@ -78,7 +88,7 @@ class Search extends Component {
   }
 
   changeBookShelf(event, bookId) {
-
+    
     let newSearchBooks = [...this.state.searchBooks ]
 
     console.log()
@@ -120,7 +130,7 @@ class Search extends Component {
           {this.state.searchBooks[0] !== undefined && 
             this.state.searchBooks.map((book) => {  
               
-              return <BookItems key={book.id} book={book} changeBookShelf={this.changeBookShelf} route="search" />
+            return <BookItems key={book.id} book={book} changeBookShelf={this.changeBookShelf} route="search" myBookArray={this.state.myBooks}/>
            
            })
           
