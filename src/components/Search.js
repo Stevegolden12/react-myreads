@@ -88,7 +88,7 @@ class Search extends Component {
   }
 
   changeBookShelf(event, bookId, isBookinMyBooks, checkBookIndex) {  
-
+   
     let newSearchBooks = [...this.state.searchBooks ]
 
     console.log()
@@ -101,9 +101,17 @@ class Search extends Component {
 
     let addBook = newSearchBooks[findBookIndex]
 
-    this.setState(() => ({
-      myBooks: [...this.state.myBooks, addBook ] 
-    }))
+    if (isBookinMyBooks === false) {
+      this.setState(() => ({
+        myBooks: [...this.state.myBooks, addBook]
+      }))
+    } else {   
+      let changeMyBooks = [...this.state.myBooks]
+      changeMyBooks[checkBookIndex].shelf = event.target.value      
+      this.setState(() => ({
+        myBooks: changeMyBooks
+      }))      
+    }
    
   }
 
