@@ -113,8 +113,10 @@ class App extends Component {
     return (
       <div className="App">
         <div className="main-page__main-page-link-wrapper">
-          <Link to={{
-            pathname: '/Search',
+          <Link
+            href="/search"
+            to={{
+            pathname: '/search',
             state: {
               myBooks: this.state.myBooks
             }
