@@ -91,7 +91,7 @@ class App extends Component {
 
   }
  
-  changeBookShelf(event, bookId) {
+  changeBookShelf(event, bookId, ignoreId, ignoreKey) {
       console.log("changeBookShelf function triggered")
       const findBookIndex = this.state.myBooks.findIndex((book) => {
         return book.id === bookId
