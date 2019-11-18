@@ -9,14 +9,9 @@ class ShelfTransferMenu extends Component {
     let shelf;
     let isBookinMyBooks = false;
     let checkBookIndex = -1;
-    console.log(this.props.book.id)
-    console.log(this.props.myBooks)
-  
-  
-   
+    
     if(this.props.route === 'app') {
       shelf = this.props.isShelf;  
-      console.log(shelf)
     } else {
 
       let myBooksId = this.props.myBooks.map((book) => {
@@ -28,8 +23,6 @@ class ShelfTransferMenu extends Component {
       if (checkBookIndex === -1) {
         shelf = ''
       } else {
-        console.log(checkBookIndex)
-        console.log(this.props.myBooks[checkBookIndex].shelf)
         shelf = this.props.myBooks[checkBookIndex].shelf
         isBookinMyBooks = true
       }
