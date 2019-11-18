@@ -61,30 +61,12 @@ class Search extends Component {
             searchBooks: result
           }))
         })
-    }
+    } else {
+      this.setState(() => ({
+        searchBooks: []
+      }))
+    }  
     
-    /*
-    let value = event.target.value.toLowerCase()
-  
-    let filterSearch = this.state.allBooks.map(book => {
-      let titles = book.title.toLowerCase();    
-       if (titles.includes(value)) {         
-        return book
-       } else {   
-        return null
-      }
-     })
-      filterSearch = filterSearch.filter((book) => {
-      return book !== null
-    })
-     this.setState({
-      searchInput: event.target.value,
-      searchBooks: filterSearch     
-    })
-
-    //console.log(this.state.searchBooks)
-  
-  */
   }
 
   changeBookShelf(event, bookId, isBookinMyBooks, checkBookIndex) {  
