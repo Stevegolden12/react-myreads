@@ -44,15 +44,7 @@ class BookItems extends Component {
 
   }
 
-  render() {   
-/*
-    console.log(this.props.myBookArray)
-    let isInArray = this.props.myBookArray.find((book)=>{
-      return book.id === 'asdf'
-    })
-
-    console.log(isInArray)
-    */
+  render() {     
     return (
       <div className="main-page__book-items">   
 
@@ -62,7 +54,7 @@ class BookItems extends Component {
         }
 
         <div className="mainpage__formwrapper">
-          {this.state.isSelectVisible === true && <ShelfTransferMenu isShelf={this.props.book.shelf} book={this.props.book} route={this.props.route} changeBookShelf={this.props.changeBookShelf} toggleOptionNoneSelect={this.toggleOptionNoneSelect}/>}
+          {this.state.isSelectVisible === true && <ShelfTransferMenu isShelf={this.props.book.shelf} book={this.props.book} route={this.props.route} changeBookShelf={this.props.changeBookShelf} toggleOptionNoneSelect={this.toggleOptionNoneSelect} myBooks={this.props.myBooks}/>}
         </div>
         <img className="main-page__show-shelf-transfer-image" src={arrowDropDown} alt="arrow drop down" onClick={() => { this.toggleSelect() }}/>
         <div className="main-page__book-info-wrapper">

@@ -87,8 +87,8 @@ class Search extends Component {
   */
   }
 
-  changeBookShelf(event, bookId) {
-    
+  changeBookShelf(event, bookId, isBookinMyBooks, checkBookIndex) {  
+
     let newSearchBooks = [...this.state.searchBooks ]
 
     console.log()
@@ -130,7 +130,7 @@ class Search extends Component {
           {this.state.searchBooks[0] !== undefined && 
             this.state.searchBooks.map((book) => {  
               
-            return <BookItems key={book.id} book={book} changeBookShelf={this.changeBookShelf} route="search" myBookArray={this.state.myBooks}/>
+            return <BookItems key={book.id} book={book} changeBookShelf={this.changeBookShelf} route="search" myBooks={this.state.myBooks}/>
            
            })
           

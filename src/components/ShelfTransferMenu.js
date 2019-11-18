@@ -7,17 +7,39 @@ class ShelfTransferMenu extends Component {
   }
   render() {
     let shelf;
-
-    
+    let isBookinMyBooks = false;
+    console.log(this.props.book.id)
+    console.log(this.props.myBooks)
+    let myBooksId = []
+    let checkBookIndex;
+   
     if(this.props.route === 'app') {
       shelf = this.props.isShelf;  
       console.log(shelf)
     } else {
-       shelf = ''
+
+      let myBooksId = this.props.myBooks.map((book) => {
+        return book.id
+      })
+      let checkBookIndex = myBooksId.indexOf(this.props.book.id)
+
+
+      if (checkBookIndex === -1) {
+        shelf = ''
+      } else {
+
+
+
+
+
+        console.log(this.props.myBooks[checkBookIndex].shelf)
+        shelf = this.props.myBooks[checkBookIndex].shelf
+        isBookinMyBooks = true
+      }
     }   
    return (
       < form >
-        <select className="main-page__select" size="5" visiblity={this.props.isSelectVisible === true ? 'visible' : 'hidden'} defaultValue={this.state.shelf !== undefined ? this.state.shelf : 'noValue'} onChange={(event) => { this.props.changeBookShelf(event, this.props.book.id); this.props.toggleOptionNoneSelect() }} >
+        <select className="main-page__select" size="5" visiblity={this.props.isSelectVisible === true ? 'visible' : 'hidden'} defaultValue={shelf !== undefined ? shelf : 'noValue'} onChange={(event) => { this.props.changeBookShelf(event, this.props.book.id, isBookinMyBooks, checkBookIndex); this.props.toggleOptionNoneSelect() }} >
          <option hidden value='noValue'></option>
          <option disabled>Move to...</option> 
           <option className="main-page__option" value="currentlyReading">Currently Reading</option>
