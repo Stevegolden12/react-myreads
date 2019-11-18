@@ -8,10 +8,11 @@ class ShelfTransferMenu extends Component {
   render() {
     let shelf;
     let isBookinMyBooks = false;
+    let checkBookIndex = -1;
     console.log(this.props.book.id)
     console.log(this.props.myBooks)
-    let myBooksId = []
-    let checkBookIndex;
+  
+  
    
     if(this.props.route === 'app') {
       shelf = this.props.isShelf;  
@@ -21,17 +22,13 @@ class ShelfTransferMenu extends Component {
       let myBooksId = this.props.myBooks.map((book) => {
         return book.id
       })
-      let checkBookIndex = myBooksId.indexOf(this.props.book.id)
+      checkBookIndex = myBooksId.indexOf(this.props.book.id)
 
 
       if (checkBookIndex === -1) {
         shelf = ''
       } else {
-
-
-
-
-
+        console.log(checkBookIndex)
         console.log(this.props.myBooks[checkBookIndex].shelf)
         shelf = this.props.myBooks[checkBookIndex].shelf
         isBookinMyBooks = true
