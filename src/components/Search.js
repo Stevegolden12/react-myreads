@@ -22,14 +22,10 @@ class Search extends Component {
  
   
   componentDidMount() {
-    console.log("Testing component did mount")
-    console.log(this.props.location.state === undefined)
     if (this.props.location.state === undefined) {
-      console.log(this.props.location.state === undefined)
-     
+
       BooksAPI.getAll()
         .then((books) => {
-          console.log(books)
           this.setState(() => ({
             myBooks: books
           }))
@@ -44,13 +40,12 @@ class Search extends Component {
         myBooks: this.props.location.state.myBooks,
       }))
     }
-    console.log(this.state.myBooks)
+
   }
 
 
   changeInput(event) {
-    console.log(event.target.value)
-    
+     
     if(event.target.value !== '') {
       this.setState({
         searchInput: event.target.value
@@ -72,8 +67,6 @@ class Search extends Component {
   changeBookShelf(event, bookId, isBookinMyBooks, checkBookIndex) {  
    
     let newSearchBooks = [...this.state.searchBooks ]
-
-    console.log()
     
     let findBookIndex = newSearchBooks.findIndex((book) => {
       return book.id === bookId

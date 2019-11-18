@@ -4,7 +4,7 @@ import './index.css';
 import App from './components/App';
 import Search from './components/Search';
 import * as serviceWorker from './serviceWorker';
-import { BrowserRouter, Router, Route } from "react-router-dom";
+import { Router, Route } from "react-router-dom";
 import { createBrowserHistory } from "history";
 
 const history = createBrowserHistory();

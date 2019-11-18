@@ -3,7 +3,7 @@ import '../App.css';
 import BookCategories from './BookCategories.js'
 import * as BooksAPI from '../BooksAPI.js';
 import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+
 
 
 
@@ -20,52 +20,11 @@ class App extends Component {
   }
 
 
-  componentDidUpdate(prevProps) {
-    // will be true
-   
-    let locationChanged = this.props.location !== prevProps.location;
-        
-    //console.log(prevProps.location.state) 
-    console.log(this.props.location)
-    console.log(prevProps.location)
-    if (locationChanged) {
-      console.log("if locationChanged triggered")
-      /*
-      this.setState({
-        myBooks: this.props.location.state.myBooks,
-      })
-      */
-    }
-    console.log(this.props.location)
-    
-}
-
   componentDidMount() {
-    console.log(this.props.location)
-    const { location } = { ...this.props }
-   
-   /*
-    if (this.props.location.state === undefined) {
+
+    if (this.props.location.state === undefined || this.props.location.state.myBooks.length === 0) {    
       BooksAPI.getAll()
-        .then((books) => {
-          console.log(books)
-          this.setState(() => ({
-            myBooks: books
-          }))
-        })
-    } else {
-      this.setState({
-        myBooks: this.props.location.state.myBooks,
-      })
-    }
-    */
-    
-   console.log(this.props.location.state)
-    if (this.props.location.state === undefined || this.props.location.state.myBooks.length === 0) {
-      console.log(this.props.location.state === undefined)
-      BooksAPI.getAll()
-        .then((books) => {
-          console.log(books) 
+        .then((books) => {     
           this.setState(() => ({
             myBooks: books
           }))
@@ -79,20 +38,11 @@ class App extends Component {
              this.setState(()=>({
               myBooks: this.props.location.state.myBooks,
       }))
-      /*
-
-    } else {
-      //console.log("checking logic this.props.history")   
-      //this.props.history.replace('/')
-      //console.log(this.props.history.location.state.myBooks)
-    }  
-    */
     }
 
   }
  
-  changeBookShelf(event, bookId, ignoreId, ignoreKey) {
-      console.log("changeBookShelf function triggered")
+  changeBookShelf(event, bookId, ignoreId, ignoreKey) {    
       const findBookIndex = this.state.myBooks.findIndex((book) => {
         return book.id === bookId
       })
