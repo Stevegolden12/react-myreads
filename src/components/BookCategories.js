@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
-import BookItems from './BookItems'
+import BookItems from './BookItems';
+import PropTypes from 'prop-types';
 
 
 class BookCategories extends Component {
@@ -21,6 +22,12 @@ class BookCategories extends Component {
       </React.Fragment>
       )
   }
+}
+
+BookCategories.propTypes = {
+  categoryName: PropTypes.string,
+  books:PropTypes.array,
+  changeBookShelf: PropTypes.func,
 }
 
 export default BookCategories

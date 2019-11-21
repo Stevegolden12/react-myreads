@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import '../App.css';
 import * as BooksAPI from '../BooksAPI.js';
 import { Link } from "react-router-dom";
-import BookItems from './BookItems'
+import BookItems from './BookItems';
+import PropTypes from 'prop-types';
 
 class Search extends Component {
   constructor(props) {
@@ -122,6 +123,14 @@ class Search extends Component {
       </React.Fragment>
       )
   }
+}
+
+Search.propTypes = {
+  searchInput: PropTypes.string,
+  myBooks: PropTypes.array,
+  searchBooks: PropTypes.array,
+  getMyBooks: PropTypes.bool,
+  myBooks: PropTypes.array,
 }
 
 export default Search

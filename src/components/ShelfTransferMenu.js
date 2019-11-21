@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
+import PropTypes from 'prop-types';
 
 class ShelfTransferMenu extends Component {
   state = {
@@ -41,6 +42,15 @@ class ShelfTransferMenu extends Component {
       </form >
     )
   }
+}
+
+ShelfTransferMenu.propTypes = {
+  isShelf: PropTypes.string,
+  book: PropTypes.array,
+  changeBookShelf: PropTypes.func,
+  route: PropTypes.string,
+  toggleOptionNoneSelect: PropTypes.func,
+  myBooks: PropTypes.array,
 }
 
 export default ShelfTransferMenu
