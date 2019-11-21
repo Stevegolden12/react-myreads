@@ -3,6 +3,7 @@ import '../App.css';
 import ShelfTransferMenu from './ShelfTransferMenu'
 import arrowDropDown from '../icons/arrow-drop-down.svg';
 import noImageAvailable from '../icons/no-image-available.png'
+import PropTypes from 'prop-types';
 
 class BookItems extends Component {
   constructor(props) {
@@ -75,6 +76,13 @@ class BookItems extends Component {
       </div>
         )
   }
+}
+
+BookItems.propTypes = {
+  key: PropTypes.string,
+  book: PropTypes.array,
+  changeBookShelf: PropTypes.func,
+  route: PropTypes.string
 }
 
 export default BookItems

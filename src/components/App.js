@@ -3,9 +3,7 @@ import '../App.css';
 import BookCategories from './BookCategories.js'
 import * as BooksAPI from '../BooksAPI.js';
 import { Link } from "react-router-dom";
-
-
-
+import PropTypes from 'prop-types';
 
 
 class App extends Component {
@@ -84,6 +82,9 @@ class App extends Component {
   }
 }
 
+App.propTypes = {
+  myBooks: PropTypes.array,
+}
 
 
 export default App;
